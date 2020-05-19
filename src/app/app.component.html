@@ -274,12 +274,9 @@
                 <p>
                   See the <a href="/docs">docs</a> tab for Tutorials and help.
                 </p>
-                <p class="sessiontitle">
-                  Current splitting sessions (default session: dcrbr1):
-                </p>
-                <ul id="stakepool-brasil">
-                  loading...
-                </ul>
+                <div *ngFor="let pool of poolMap | keyvalue">
+                  <app-pool [pool]="pool.value"></app-pool>
+                </div>
               </div>
             </div>
           </div>
