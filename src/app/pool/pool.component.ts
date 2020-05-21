@@ -1,5 +1,5 @@
 import { Component, Input } from "@angular/core";
-import { Pool } from "../app.component";
+import { Pool } from "../models/pool";
 
 @Component({
   selector: "app-pool",

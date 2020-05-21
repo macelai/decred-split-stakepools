@@ -1,16 +1,8 @@
 import { Component, OnInit, ViewChild } from "@angular/core";
 import { webSocket } from "rxjs/webSocket";
 import { PoolComponent } from "./pool/pool.component";
-
-export interface Pool {
-  sessions: Session[];
-}
-
-export interface Session {
-  amounts: number[];
-  total?: number;
-  name: string;
-}
+import { Session } from "./models/session";
+import { Pool } from "./models/pool";
 
 @Component({
   selector: "app-root",
@@ -30,7 +22,7 @@ export class AppComponent implements OnInit {
   decredBrasilWS = webSocket<Session[]>(
     "wss://split-ticket-svc.stake.decredbrasil.com:8477/watchWaitingList"
   );
-  poolList = [this.decredVotingWS, this.niniNineWS];
+  poolList = [this.decredVotingWS, this.niniNineWS, this.decredVotingWS];
 
   poolMap = new Map<string, Pool>();
 
