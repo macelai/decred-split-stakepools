@@ -169,7 +169,18 @@
                   See the <a href="/docs">docs</a> tab for Tutorials and help.
                 </p>
                 <div *ngFor="let pool of poolMap | keyvalue">
+                  {{pool.value.name}}
+                  <br>
+                  {{pool.value.session_name}}
+                  <br>
+                  {{pool.value.url}}
+                  <br>
+                  {{pool.value.fee}}
+                  <br>
                   <app-pool [pool]="pool.value"></app-pool>
+                  <br>
+                  <br>
+                  <br>
                 </div>
               </div>
             </div>

@@ -1,8 +1,8 @@
 import { Component, OnInit, ViewChild } from "@angular/core";
 import { webSocket } from "rxjs/webSocket";
-import { PoolComponent } from "./pool/pool.component";
 import { Session } from "./models/session";
 import { Pool } from "./models/pool";
+import { poolList } from "./pool-data";
 
 @Component({
   selector: "app-root",
@@ -10,33 +10,27 @@ import { Pool } from "./models/pool";
   styleUrls: ["./app.component.css"],
 })
 export class AppComponent implements OnInit {
-  title = "decred-stakepools";
-  @ViewChild(PoolComponent, { static: true }) poolComponent: PoolComponent;
-
-  decredVotingWS = webSocket<Session[]>(
-    "wss://matcher.decredvoting.com:8477/watchWaitingList"
-  );
-  niniNineWS = webSocket<Session[]>(
-    "wss://split.99split.com:8477/watchWaitingList"
-  );
-  decredBrasilWS = webSocket<Session[]>(
-    "wss://split-ticket-svc.stake.decredbrasil.com:8477/watchWaitingList"
-  );
-  poolList = [this.decredVotingWS, this.niniNineWS, this.decredVotingWS];
-
   poolMap = new Map<string, Pool>();
+  poolList: Pool[] = poolList;
 
-  constructor() {}
+  constructor() {
+    this.poolList.forEach((pool) => {
+      this.poolMap.set(pool.websocket_url, pool);
+    });
+  }
 
   ngOnInit() {
     this.poolList.forEach((pool) => {
-      pool.subscribe((data) => {
-        const sessionData = data as Session[];
-        const poolData = { sessions: sessionData } as Pool;
+      const ws = webSocket<Session[]>(pool.websocket_url);
+      ws.subscribe((data) => {
         // @ts-ignore
-        this.poolMap.set(pool._config.url, poolData);
+        const actualData = this.poolMap.get(ws._config.url);
+        console.log(actualData);
+        actualData.sessions = data as Session[];
         // @ts-ignore
-        this.formatData(pool._config.url);
+        this.poolMap.set(ws._config.url, actualData);
+        // @ts-ignore
+        this.formatData(ws._config.url);
       });
     });
   }
