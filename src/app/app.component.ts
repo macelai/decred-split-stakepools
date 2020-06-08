@@ -25,7 +25,6 @@ export class AppComponent implements OnInit {
       ws.subscribe((data) => {
         // @ts-ignore
         const actualData = this.poolMap.get(ws._config.url);
-        console.log(actualData);
         actualData.sessions = data as Session[];
         // @ts-ignore
         this.poolMap.set(ws._config.url, actualData);

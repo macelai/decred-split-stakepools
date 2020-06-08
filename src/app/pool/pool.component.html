@@ -1,5 +1,12 @@
+<h3>{{ pool.name }}</h3>
+<p>Pool webiste: <a [href]="pool.url">{{pool.url}}</a></p>
+<p>Fee: {{ pool.fee }}%</p>
+<p>Session name: {{ pool.session_name }}</p>
+
 <div *ngFor="let session of pool.sessions">
-  {{ session.name }}
-  {{ session.amounts }}
-  {{ session.total }}
+  <span>Session id: {{ session.name | slice:0:15 }}...</span>
+  <br />
+  <span>Amounts: [{{ session.amounts.join(', ') }}]</span>
+  <br>
+  <span>Total: {{ session.total }} DCR</span>
 </div>
