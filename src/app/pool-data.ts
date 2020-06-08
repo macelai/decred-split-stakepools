@@ -24,7 +24,7 @@ const decredBrasil = {
   websocket_url:
     "wss://split-ticket-svc.stake.decredbrasil.com:8477/watchWaitingList",
   session_name: "dcrbr1",
-  fee: 1,
+  fee: 5,
   sessions: [],
 } as Pool;
 
