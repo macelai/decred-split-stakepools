@@ -1,12 +1,12 @@
 {
-  "name": "decred-stakepools",
-  "version": "0.0.0",
+  "name": "decred-split-stakepools",
+  "version": "0.0.1",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
     "clean": "rimraf ./dist",
     "build": "ng build",
-    "build:prod": "ng build --prod --base-href /decred-stakepools/ --deploy-url /decred-stakepools/",
+    "build:prod": "ng build --prod --base-href /decred-split-stakepools/ --deploy-url /decred-split-stakepools/",
     "test": "ng test",
     "test-headless": "ng test --watch=false --browsers=ChromeHeadless",
     "lint": "ng lint",

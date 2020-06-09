@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "decred-stakepools": {
+    "decred-split-stakepools": {
       "projectType": "application",
       "schematics": {},
       "root": "",
@@ -13,7 +13,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/decred-stakepools",
+            "outputPath": "dist/decred-split-stakepools",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
@@ -62,18 +62,18 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "decred-stakepools:build"
+            "browserTarget": "decred-split-stakepools:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "decred-stakepools:build:production"
+              "browserTarget": "decred-split-stakepools:build:production"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "decred-stakepools:build"
+            "browserTarget": "decred-split-stakepools:build"
           }
         },
         "test": {
@@ -110,15 +110,15 @@
           "builder": "@angular-devkit/build-angular:protractor",
           "options": {
             "protractorConfig": "e2e/protractor.conf.js",
-            "devServerTarget": "decred-stakepools:serve"
+            "devServerTarget": "decred-split-stakepools:serve"
           },
           "configurations": {
             "production": {
-              "devServerTarget": "decred-stakepools:serve:production"
+              "devServerTarget": "decred-split-stakepools:serve:production"
             }
           }
         }
       }
     }},
-  "defaultProject": "decred-stakepools"
+  "defaultProject": "decred-split-stakepools"
 }
